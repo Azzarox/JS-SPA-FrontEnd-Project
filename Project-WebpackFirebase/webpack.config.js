@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -11,9 +13,19 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
     },
+    optimization: {
+        // When using OptimizeCssAssetsPlugin it overwrites the default JS Minifier and optimizer (which is the terser-webpack-plugin)
+        // So we need to add it manually again
+        minimizer: [new OptimizeCssAssetsPlugin(), new TerserPlugin()],
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: 'template.html',
+            minify: {
+                removeAttributeQuotes: true,
+                collapseWhitespace: true,
+                removeComments: true,
+            },
         }),
 
         new MiniCssExtractPlugin({
