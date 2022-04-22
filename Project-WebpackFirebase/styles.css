@@ -260,6 +260,7 @@ figure.navbar-profile {
     overflow-wrap: break-word;
     line-height: normal;
     font-size: 19px;
+    text-transform:none;
 }
 .description::before {
     content: 'Description:';
