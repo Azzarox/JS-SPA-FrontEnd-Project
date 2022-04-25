@@ -30,7 +30,7 @@ const signInTemplate = (ctx) => html`
             <div
                 class="control is-flex is-flex-direction-column is-justify-content-center"
             >
-                <button class="button is-primary">Log in</button>
+                <button class="button is-primary">Sign In</button>
                 <div>
                     <p class="pt-2">
                         You don't have an account yet?

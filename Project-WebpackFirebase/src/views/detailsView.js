@@ -6,7 +6,7 @@ import { allLikes, createLike, getAllPhotoLikes } from './likes';
 const showEditDeleteButtons = (ctx, onDelete) => {
     if (ctx.photo.isOwner) {
         return html`
-            <a href="/details/edit/${ctx.photo.id}" class="button is-info">
+            <a href="/details/edit/${ctx.photo.id}" class="button is-info is-light">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="icon icon-tabler icon-tabler-edit"
@@ -33,7 +33,7 @@ const showEditDeleteButtons = (ctx, onDelete) => {
             <a
                 @click=${onDelete}
                 href="javascript:void(0)"
-                class="button is-info"
+                class="button is-danger is-light"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@ const showCommentButton = (ctx) => {
                 @click=${commentFormHandler}
                 href="#comment-form"
                 id="comment-form-toggle"
-                class="button is-info"
+                class="button is-info is-light"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +141,7 @@ const detailsTemplate = (ctx, onDelete) => html`
                             ? html` <a
                                   @click=${(ev) => createLike(ev, ctx)}
                                   href="#"
-                                  class="button is-primary"
+                                  class="button is-success is-light"
                               >
                                   <svg
                                       xmlns="http://www.w3.org/2000/svg"

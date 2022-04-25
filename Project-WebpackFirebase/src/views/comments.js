@@ -1,4 +1,3 @@
-import { collection } from 'firebase/firestore';
 import { html } from 'lit-html';
 import { getCollectionReference, getSingleDoc, postData } from '../server';
 

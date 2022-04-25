@@ -8,7 +8,7 @@ export const searchFormTemplate = (ctx) => html`
         class="search-form is-flex is-flex-direction-row-reverse"
     >
         <button type="" class="search-icon-link">
-            <a @click=${showInputField} href="javascript:void(0)"
+            <a  @click=${showInputField} href="javascript:void(0)"
                 ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="ml-3 icon icon-tabler icon-tabler-search"
@@ -20,7 +20,7 @@ export const searchFormTemplate = (ctx) => html`
                     fill="none"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    style="color: #00c4a7"
+                    style="color: #95685ce3"
                 >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <circle cx="10" cy="10" r="7"></circle>

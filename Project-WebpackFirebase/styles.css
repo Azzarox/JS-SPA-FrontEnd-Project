@@ -13,8 +13,25 @@ h5,
 h6 {
     text-transform: capitalize;
 }
+
 :root {
     --width-max: 100%;
+}
+
+/* Change .is-primary buttons color and hover */
+.button.is-primary {
+    /* background-color: #643326e3; */
+    background-color: #95685ce3;
+    font-weight: 600;
+    /* background-color: #593329; */
+}
+
+.button.is-primary:hover {
+    background-color: #886257;
+}
+
+.button.is-primary:focus:not(:active) {
+    box-shadow: none;
 }
 
 /* utils */
@@ -65,7 +82,7 @@ figure.navbar-profile {
     width: 100%;
     height: auto;
     position: relative;
-    top:50%;
+    top: 50%;
     right: 10px;
     padding: 0 15px;
 }
@@ -75,13 +92,15 @@ figure.navbar-profile {
 .search-form input {
     z-index: 0;
     padding: 3px;
-    border: 1px solid #00c4a7;
+    border: 1px solid #95685ce3;
     display: none;
 }
+
 /* .search-icon-link:hover + .search-input-field {
     opacity: .5;
     transition: opacity 0.5s, opacity 0.5s linear;
 } */
+
 .search-icon-link {
     position: relative;
     vertical-align: top;
@@ -97,6 +116,7 @@ figure.navbar-profile {
     cursor: pointer;
     outline: inherit;
 }
+
 /* Card */
 .catalog-flex {
     display: grid;
@@ -142,6 +162,31 @@ figure.navbar-profile {
 .details-btn {
     margin: 0 15px 10px 15px;
 }
+
+/* Details btn color */
+.details-color {
+    color: #95765c;
+    border: 1px solid #95765c;
+}
+
+.details-color:hover {
+    background-color: #95765c;
+    color: white;
+}
+
+.details-color:focus:not(:active) {
+    box-shadow: none;
+}
+.details-btn.details-color:focus {
+    border-color: #ccc7c7;
+    color:black;
+}
+
+.details-btn.details-color:active {
+    color:#95765c;
+    border: 1px solid #95765c;
+}
+/* END Details btn color */
 
 /* Details */
 
@@ -260,7 +305,7 @@ figure.navbar-profile {
     overflow-wrap: break-word;
     line-height: normal;
     font-size: 19px;
-    text-transform:none;
+    text-transform: none;
 }
 .description::before {
     content: 'Description:';

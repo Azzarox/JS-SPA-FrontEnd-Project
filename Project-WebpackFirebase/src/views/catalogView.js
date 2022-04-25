@@ -27,7 +27,7 @@ export const catalogTemplate = (ctx, photos) => html`
 
                             <a
                                 href="/details/${picture.id}"
-                                class="button is-info is-outlined details-btn"
+                                class="button details-color details-btn"
                             >
                                 Details
                             </a>
