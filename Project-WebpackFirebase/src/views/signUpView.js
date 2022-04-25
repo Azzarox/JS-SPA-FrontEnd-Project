@@ -27,7 +27,7 @@ const signUpTemplate = (ctx) => html`
             </div>
 
             <div class="field">
-                <label class="label">Photo</label>
+                <label class="label">Photo URL</label>
                 <div class="control">
                     <input class="input" name="photo" type="text" />
                 </div>

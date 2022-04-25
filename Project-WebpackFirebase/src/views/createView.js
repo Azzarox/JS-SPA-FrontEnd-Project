@@ -21,7 +21,7 @@ const createTemplate = (ctx) => html`
             </div>
 
             <div class="field">
-                <label class="label">Image</label>
+                <label class="label">Image URL</label>
                 <div class="control">
                     <input class="input" type="text" name="image" />
                 </div>
