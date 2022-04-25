@@ -1,0 +1,2 @@
+1.Fix search
+2.Change buttons to be outlined in the menu bar 
