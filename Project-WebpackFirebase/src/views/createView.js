@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import { getCollectionReference, postData } from '../server';
-import { formDataValidator } from '../utils/formFieldsValidator';
+import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
 
 const createTemplate = (ctx) => html`
     <section class="section container create">
@@ -63,9 +63,10 @@ function onSubmitCreate(ev, ctx) {
     ev.preventDefault();
     let formData = Object.fromEntries(new FormData(ev.currentTarget));
     formData.price = Number(formData.price);
-    if (formDataValidator(formData)) {
+    if (formFieldIsEmptyValidator(formData)) {
         return alert('Empty fields!');
     }
+
     const data = { userId: ctx.user.uid, ...formData };
     postData(collectionReference, data);
     ctx.page.redirect('/catalog');
