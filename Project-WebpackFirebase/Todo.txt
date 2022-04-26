@@ -1,2 +1,6 @@
 1.Fix search
 2.Change buttons to be outlined in the menu bar 
+3.Add error fields to every form field
+
+4.Use scrollIntoView for showing errors on forms
+5.Make common webpack, development and production configs
