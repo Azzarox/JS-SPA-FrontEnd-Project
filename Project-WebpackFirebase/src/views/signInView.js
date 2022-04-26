@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { logInUser } from '../server';
 import { formDisplayError } from '../utils/formErrorDisplay';
-import { formDataValidator } from '../utils/formFieldsValidator';
+import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
 
 const signInTemplate = (ctx) => html`
     <section class="section container">
@@ -50,7 +50,7 @@ async function onSignIn(ev,ctx) {
     const target = ev.currentTarget;
     const formData = Object.fromEntries(new FormData(ev.currentTarget));
     try {
-        if (formDataValidator(formData)) {
+        if (formFieldIsEmptyValidator(formData)) {
             throw new Error('Empty Fields!');
         }
         const user = await logInUser(formData.email, formData.password);

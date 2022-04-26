@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { createUser, setSingleDoc } from '../server';
 import { formDisplayError } from '../utils/formErrorDisplay';
-import { formDataValidator } from '../utils/formFieldsValidator';
+import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
 
 const signUpTemplate = (ctx) => html`
     <section class="section container">
@@ -67,7 +67,7 @@ async function onSignUp(ev, ctx) {
     const formData = Object.fromEntries(new FormData(ev.currentTarget));
     // ev.target.reset();
     try {
-        if (formDataValidator(formData)) {
+        if (formFieldIsEmptyValidator(formData)) {
             throw new Error('Empty Fields');
         }
         const user = await createUser(formData.email, formData.password);
