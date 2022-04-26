@@ -1,4 +1,5 @@
 import { html } from 'lit-html';
+import { getSearchData } from '../searchUI';
 import { getByQuery, getCollectionReference } from '../server';
 import { catalogTemplate } from './catalogView';
 
@@ -8,7 +9,7 @@ export const searchFormTemplate = (ctx) => html`
         class="search-form is-flex is-flex-direction-row-reverse"
     >
         <button type="" class="search-icon-link">
-            <a  @click=${showInputField} href="javascript:void(0)"
+            <a @click=${showInputField} href="javascript:void(0)"
                 ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="ml-3 icon icon-tabler icon-tabler-search"
@@ -37,14 +38,9 @@ let colRef = getCollectionReference(collectionName);
 
 async function onSubmitSearch(ev, ctx) {
     ev.preventDefault();
-    let target = ev.currentTarget
+    let target = ev.currentTarget;
     let formData = Object.fromEntries(new FormData(ev.currentTarget));
-    const searchPhotos = await getByQuery(
-        colRef,
-        'title',
-        '>=',
-        formData.search
-    );
+    const searchPhotos = await getSearchData(formData.search);
     target.reset();
     ctx.render(catalogTemplate(ctx, searchPhotos));
 }
