@@ -2,6 +2,7 @@ import { html } from 'lit-html';
 import { createUser, setSingleDoc } from '../server';
 import { formDisplayError } from '../utils/formErrorDisplay';
 import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
+import { imageURLIsNotCorrectValidator } from '../utils/imageUrlValidator';
 
 const signUpTemplate = (ctx) => html`
     <section class="section container">
@@ -70,6 +71,11 @@ async function onSignUp(ev, ctx) {
         if (formFieldIsEmptyValidator(formData)) {
             throw new Error('Empty Fields');
         }
+
+        if (imageURLIsNotCorrectValidator(formData.photo)){
+            throw new Error('Image url is not correct!')
+        }
+
         const user = await createUser(formData.email, formData.password);
         user.displayName = formData.username;
         user.photoURL = formData.photo;
