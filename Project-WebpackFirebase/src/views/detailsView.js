@@ -69,7 +69,6 @@ const showCommentButton = (ctx) => {
         return html`
             <a
                 @click=${commentFormHandler}
-                href="#comment-form"
                 id="comment-form-toggle"
                 class="button is-info is-light"
             >

@@ -33,35 +33,38 @@ export const commentsTemplate = (ctx) => {
 };
 
 export const commentForm = (ctx) => {
-    return html`
-        <div id="comment-form" class="comment-form">
-            <form
-                @submit=${(ev) => onSubmitComment(ev, ctx)}
-                class="field control box"
-            >
-                <label for="comment"></label>
-                <textarea
-                    class="textarea comment-textarea"
-                    name="content"
-                    id="comment"
-                    cols="30"
-                    rows="10"
-                ></textarea>
-                <div class="is-flex mt-3 is-justify-content-flex-start">
-                    <button
-                        class="button px-5 is-size-5 is-black"
-                        type="submit"
-                    >
-                        Post
-                    </button>
-                </div>
-            </form>
-        </div>
-    `;
+    if (ctx.hasUser && !ctx.photo.isOwner) {
+        return html`
+            <div class="comment-form">
+                <form
+                    @submit=${(ev) => onSubmitComment(ev, ctx)}
+                    class="field control box"
+                >
+                    <label for="comment"></label>
+                    <textarea
+                        class="textarea comment-textarea"
+                        name="content"
+                        id="comment"
+                        cols="30"
+                        rows="10"
+                    ></textarea>
+                    <div class="is-flex mt-3 is-justify-content-flex-start">
+                        <button
+                            class="button px-5 is-size-5 is-black"
+                            type="submit"
+                        >
+                            Post
+                        </button>
+                    </div>
+                </form>
+            </div>
+        `;
+    }
 };
 
 export function commentFormHandler() {
     const commentForm = document.querySelector('.comment-form');
+    commentForm.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scrolls to the element
 
     commentForm.style.visibility =
         commentForm.style.visibility == 'visible' ? 'hidden' : 'visible';
