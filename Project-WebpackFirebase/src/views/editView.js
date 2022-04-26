@@ -1,5 +1,7 @@
 import { html } from 'lit-html';
 import { updateSingleDoc } from '../server';
+import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
+import { imageURLIsNotCorrectValidator } from '../utils/imageUrlValidator';
 
 const editTemplate = (ctx) => html` <section class="section container create">
     <section class="section container create">
@@ -76,6 +78,14 @@ const collectionName = 'photos';
 function onEdit(ev, ctx) {
     ev.preventDefault();
     const formData = Object.fromEntries(new FormData(ev.currentTarget));
+    if (formFieldIsEmptyValidator(formData)) {
+        return alert('Empty Fields!');
+    }
+
+    if (imageURLIsNotCorrectValidator(formData.image)) {
+        return alert('Image URL is not correct!');
+    }
+
     updateSingleDoc(collectionName, ctx.params.id, formData);
     ctx.page.redirect(`/details/${ctx.params.id}`);
 }
