@@ -5,15 +5,17 @@ export const catalogTemplate = (ctx, photos) => html`
         <!-- <h2 class="title">Catalog</h2> -->
 
         <div class="catalog-flex">
-            ${photos.map(
-                (picture) => {
-                    picture.price = Number(picture.price).toFixed(2);
-                    
-                    return html`
+            ${photos.map((picture) => {
+                picture.price = Number(picture.price).toFixed(2);
+
+                return html`
                     <div class="card catalog-card">
                         <div data-id="${picture.id}" class="card-image">
                             <figure class="image">
-                                <img class="card-image" src="${picture.image}" />
+                                <img
+                                    class="card-image"
+                                    src="${picture.image}"
+                                />
                             </figure>
                         </div>
                         <div
@@ -21,21 +23,26 @@ export const catalogTemplate = (ctx, photos) => html`
                         >
                             <div class="card-content">
                                 <h2 class="picture-title">${picture.title}</h2>
-                                <p class="picture-creator">By: ${picture.creator}</p>
-                                <p class="picture-price" >Price: ${picture.price}$</p>
+                                <p class="picture-creator">
+                                    By: ${picture.creator}
+                                </p>
+                                <p class="picture-price">
+                                    Price: ${picture.price}$
+                                </p>
                             </div>
 
                             <a
-                                href="/details/${picture.id}"
+                                href="/details/${picture.id
+                                    ? picture.id
+                                    : picture.objectID}"
                                 class="button details-color details-btn"
                             >
                                 Details
                             </a>
                         </div>
                     </div>
-                `}
-            )}
-
+                `;
+            })}
         </div>
     </section>
 `;
