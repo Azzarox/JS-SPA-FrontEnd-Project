@@ -1,6 +1,7 @@
 import { html } from 'lit-html';
 import { getCollectionReference, postData } from '../server';
 import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
+import { imageURLIsNotCorrectValidator } from '../utils/imageUrlValidator';
 
 const createTemplate = (ctx) => html`
     <section class="section container create">
@@ -65,6 +66,10 @@ function onSubmitCreate(ev, ctx) {
     formData.price = Number(formData.price);
     if (formFieldIsEmptyValidator(formData)) {
         return alert('Empty fields!');
+    }
+
+    if (imageURLIsNotCorrectValidator(formData.image)){
+        return alert('Image URL is not correct!')
     }
 
     const data = { userId: ctx.user.uid, ...formData };
