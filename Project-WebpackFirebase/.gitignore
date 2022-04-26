@@ -6,7 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
-
+sa.json
+seed.sh
 # Firebase cache
 .firebase/
 
