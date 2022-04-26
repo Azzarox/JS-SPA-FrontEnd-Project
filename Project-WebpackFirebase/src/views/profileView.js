@@ -1,5 +1,7 @@
 import { html } from 'lit-html';
 import { getByQuery, getCollectionReference, updateSingleDoc } from '../server';
+import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
+import { imageURLIsNotCorrectValidator } from '../utils/imageUrlValidator';
 
 const profileTemplate = (ctx, myImages) => html`
     <section class="section container">
@@ -30,6 +32,7 @@ const profileTemplate = (ctx, myImages) => html`
                                     class="input"
                                     type="text"
                                     placeholder="Username"
+                                    .value="${ctx.user.profile.username}"
                                 />
                             </div>
                             <div>
@@ -39,6 +42,7 @@ const profileTemplate = (ctx, myImages) => html`
                                     class="input"
                                     type="text"
                                     placeholder="Avatar"
+                                    .value="${ctx.user.profile.photoUrl}"
                                 />
                             </div>
                         </div>
@@ -108,10 +112,20 @@ async function updateUserProfile(ev, ctx) {
     ev.preventDefault();
     let formData = Object.fromEntries(new FormData(ev.currentTarget));
 
+    if (formFieldIsEmptyValidator(formData)){
+        return alert('Empty Field!')
+    }
+    
+    if (imageURLIsNotCorrectValidator(formData.photo)){
+        return alert('URL is not correct!')
+    }
+
     updateSingleDoc('users', ctx.user.uid, {
         username: formData.username,
         photoUrl: formData.photo,
     });
+
+    ctx.page.redirect('/profile');
 }
 
 function showProfileForm(ev) {
