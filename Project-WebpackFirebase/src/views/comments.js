@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { html, nothing } from 'lit-html';
 import { getCollectionReference, getSingleDoc, postData } from '../server';
 import { errorTemplate } from '../templates/errorTemplate';
 import { formDisplayError } from '../utils/formErrorDisplay';
@@ -25,11 +25,15 @@ const commentTemplate = (comment) => {
 export const commentsTemplate = (ctx) => {
     return html`
         <div class="comments">
-            <ul>
-                ${ctx.photo.comments.map((comment) => {
-                    return commentTemplate(comment);
-                })}
-            </ul>
+            ${ctx.photo.comments == 0
+                ? html`<p class="no-comments">No comments</p>`
+                : html`
+                      <ul>
+                          ${ctx.photo.comments.map((comment) => {
+                              return commentTemplate(comment);
+                          })}
+                      </ul>
+                  `}
         </div>
     `;
 };
