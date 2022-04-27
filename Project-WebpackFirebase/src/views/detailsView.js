@@ -185,7 +185,7 @@ const detailsTemplate = (ctx, onDelete) => html`
                 <p class="description-text">${ctx.photo.description}</p>
             </div>
         </div>
-        ${commentForm(ctx)}}
+        ${commentForm(ctx)}
     </section>
 `;
 
