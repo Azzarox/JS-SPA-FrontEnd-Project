@@ -203,6 +203,7 @@ figure.navbar-profile {
     overflow-y: scroll;
     scrollbar-width: thin;
     margin-bottom: 53px;
+    /* height: 267px; */
 }
 
 .right-details .comments ul {
@@ -264,6 +265,7 @@ figure.navbar-profile {
 
 /* for details image */
 .left-details {
+    /* May have some  problems with .comments div */
     width: 100%;
     height: auto;
 }
@@ -271,7 +273,7 @@ figure.navbar-profile {
 .left-details img {
     object-fit: contain;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 }
 
 /* end for details image */

@@ -1,6 +1,7 @@
 import { html, nothing } from 'lit-html';
 import { deleteData } from '../server';
 import { deleteModal } from '../templates/modalTemplates';
+import { setDynamicHeight } from '../utils/resizeCommentsDivHeight';
 import { commentForm, commentFormHandler, commentsTemplate } from './comments';
 import { allLikes, createLike, getAllPhotoLikes } from './likes';
 
@@ -100,6 +101,7 @@ const showCommentButton = (ctx) => {
     }
 };
 
+
 const detailsTemplate = (ctx, onDelete) => html`
     <section class="section container">
         ${deleteModal(ctx)}
@@ -107,7 +109,8 @@ const detailsTemplate = (ctx, onDelete) => html`
         <p class="title my-2">${ctx.photo.title}</p>
         <div class="details-container">
             <div class="left-details">
-                <img class="details-image" src="${ctx.photo.image}" alt="" />
+                
+                <img @load=${() => setDynamicHeight()} class="details-image" src="${ctx.photo.image}" alt="" />
             </div>
             <div class="right-details">
                 ${commentsTemplate(ctx)}
