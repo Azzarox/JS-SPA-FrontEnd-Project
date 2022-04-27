@@ -4,7 +4,8 @@
 * {
     box-sizing: border-box;
 }
-p,
+
+p::first-letter,
 h1,
 h2,
 h3,
@@ -179,11 +180,11 @@ figure.navbar-profile {
 }
 .details-btn.details-color:focus {
     border-color: #ccc7c7;
-    color:black;
+    color: black;
 }
 
 .details-btn.details-color:active {
-    color:#95765c;
+    color: #95765c;
     border: 1px solid #95765c;
 }
 /* END Details btn color */
@@ -264,6 +265,7 @@ figure.navbar-profile {
     text-overflow: ellipsis;
     white-space: wrap;
 }
+
 
 .right-details .button-group {
     display: flex;
