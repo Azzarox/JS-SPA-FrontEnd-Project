@@ -1,5 +1,7 @@
 import { html } from 'lit-html';
 import { getByQuery, getCollectionReference, updateSingleDoc } from '../server';
+import { errorTemplate } from '../templates/errorTemplate';
+import { formDisplayError } from '../utils/formErrorDisplay';
 import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
 import { imageURLIsNotCorrectValidator } from '../utils/imageUrlValidator';
 
@@ -23,6 +25,7 @@ const profileTemplate = (ctx, myImages) => html`
                     method="POST"
                     class="profile-form"
                 >
+                    ${errorTemplate()}
                     <div class="update-user-profile">
                         <div class="field">
                             <div>
@@ -77,18 +80,6 @@ const myImagesTemplate = (myImages) => html`
                             />
                         </a>
                     </figure>
-                    <!-- <div class="is-grouped is-flex is-flex-direction-column">
-                        <div class="card-content">
-                            <h2 class="title">${image.title}</h2>
-                        </div>
-
-                        <a
-                            href="/details/${image.id}"
-                            class="button is-info is-outlined details-btn"
-                        >
-                            Details
-                        </a>
-                    </div> -->
                 </div>
             `
         )}
@@ -110,22 +101,26 @@ export const profileView = async (ctx) => {
 
 async function updateUserProfile(ev, ctx) {
     ev.preventDefault();
+    let target = ev.currentTarget;
     let formData = Object.fromEntries(new FormData(ev.currentTarget));
+    try {
+        if (formFieldIsEmptyValidator(formData)) {
+            throw new Error('Empty Field!');
+        }
 
-    if (formFieldIsEmptyValidator(formData)){
-        return alert('Empty Field!')
+        if (imageURLIsNotCorrectValidator(formData.photo)) {
+            throw new Error('URL is not correct!');
+        }
+
+        updateSingleDoc('users', ctx.user.uid, {
+            username: formData.username,
+            photoUrl: formData.photo,
+        });
+
+        ctx.page.redirect('/profile');
+    } catch (err) {
+        formDisplayError(target, err, false);
     }
-    
-    if (imageURLIsNotCorrectValidator(formData.photo)){
-        return alert('URL is not correct!')
-    }
-
-    updateSingleDoc('users', ctx.user.uid, {
-        username: formData.username,
-        photoUrl: formData.photo,
-    });
-
-    ctx.page.redirect('/profile');
 }
 
 function showProfileForm(ev) {

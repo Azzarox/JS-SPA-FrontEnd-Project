@@ -1,5 +1,7 @@
 import { html } from 'lit-html';
 import { getCollectionReference, postData } from '../server';
+import { errorTemplate } from '../templates/errorTemplate';
+import {formDisplayError } from '../utils/formErrorDisplay';
 import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
 import { imageURLIsNotCorrectValidator } from '../utils/imageUrlValidator';
 
@@ -7,6 +9,8 @@ const createTemplate = (ctx) => html`
     <section class="section container create">
         <h2 class="title">Create</h2>
         <form @submit=${(ev) => onSubmitCreate(ev, ctx)} id="testform">
+
+           ${errorTemplate()}
             <div class="field">
                 <label class="label">Creator</label>
                 <div class="control">
@@ -62,17 +66,23 @@ const collectionReference = getCollectionReference(collectionName);
 
 function onSubmitCreate(ev, ctx) {
     ev.preventDefault();
+    let target = ev.currentTarget;
     let formData = Object.fromEntries(new FormData(ev.currentTarget));
     formData.price = Number(formData.price);
-    if (formFieldIsEmptyValidator(formData)) {
-        return alert('Empty fields!');
-    }
 
-    if (imageURLIsNotCorrectValidator(formData.image)){
-        return alert('Image URL is not correct!')
-    }
+    try {
+        if (formFieldIsEmptyValidator(formData)) {
+            throw new Error('Empty fields!');
+        }
 
-    const data = { userId: ctx.user.uid, ...formData };
-    postData(collectionReference, data);
-    ctx.page.redirect('/catalog');
+        if (imageURLIsNotCorrectValidator(formData.image)) {
+            throw new Error('Image URL is not correct!');
+        }
+
+        const data = { userId: ctx.user.uid, ...formData };
+        postData(collectionReference, data);
+        ctx.page.redirect('/catalog');
+    } catch (err) {
+        formDisplayError(target, err);
+    }
 }

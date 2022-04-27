@@ -1,5 +1,6 @@
 import { html } from 'lit-html';
 import { logInUser } from '../server';
+import { errorTemplate } from '../templates/errorTemplate';
 import { formDisplayError } from '../utils/formErrorDisplay';
 import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
 
@@ -9,9 +10,7 @@ const signInTemplate = (ctx) => html`
 
         <form @submit=${(ev) => onSignIn(ev,ctx)}>
         <!-- Display Error Field -->
-            <div class="field error-class">
-                <p class="error-message"></p>
-            </div>
+            ${errorTemplate()}
 
             <div class="field">
                 <label class="label">Email</label>

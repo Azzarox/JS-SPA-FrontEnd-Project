@@ -1,5 +1,6 @@
 import { html } from 'lit-html';
 import { createUser, setSingleDoc } from '../server';
+import { errorTemplate } from '../templates/errorTemplate';
 import { formDisplayError } from '../utils/formErrorDisplay';
 import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
 import { imageURLIsNotCorrectValidator } from '../utils/imageUrlValidator';
@@ -9,9 +10,7 @@ const signUpTemplate = (ctx) => html`
         <h2 class="title">Sign up</h2>
 
         <form @submit=${(ev) => onSignUp(ev, ctx)}>
-            <div class="field error-class">
-                <p class="error-message"></p>
-            </div>
+            ${errorTemplate()}
 
             <div class="field">
                 <label class="label">Username</label>
@@ -72,8 +71,8 @@ async function onSignUp(ev, ctx) {
             throw new Error('Empty Fields');
         }
 
-        if (imageURLIsNotCorrectValidator(formData.photo)){
-            throw new Error('Image url is not correct!')
+        if (imageURLIsNotCorrectValidator(formData.photo)) {
+            throw new Error('Image url is not correct!');
         }
 
         const user = await createUser(formData.email, formData.password);

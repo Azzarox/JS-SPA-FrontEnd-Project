@@ -1,5 +1,7 @@
 import { html } from 'lit-html';
 import { getCollectionReference, getSingleDoc, postData } from '../server';
+import { errorTemplate } from '../templates/errorTemplate';
+import { formDisplayError } from '../utils/formErrorDisplay';
 
 const commentTemplate = (comment) => {
     return html`
@@ -40,6 +42,7 @@ export const commentForm = (ctx) => {
                     @submit=${(ev) => onSubmitComment(ev, ctx)}
                     class="field control box"
                 >
+                    ${errorTemplate()}
                     <label for="comment"></label>
                     <textarea
                         class="textarea comment-textarea"
@@ -78,12 +81,18 @@ async function onSubmitComment(ev, ctx) {
     let target = ev.currentTarget;
     const data = Object.fromEntries(new FormData(ev.currentTarget));
     const commentCreatorUser = await getSingleDoc('users', ctx.user.uid);
-    console.log(commentCreatorUser);
-    postData(collectionReference, {
-        content: data.content,
-        photoId: ctx.params.id,
-        creatorUser: commentCreatorUser,
-    });
-    target.reset();
-    ctx.page.redirect(`/details/${ctx.params.id}`);
+    try {
+        if (data.content == '') {
+            throw new Error("Can't post an empty comment!");
+        }
+        postData(collectionReference, {
+            content: data.content,
+            photoId: ctx.params.id,
+            creatorUser: commentCreatorUser,
+        });
+        target.reset();
+        ctx.page.redirect(`/details/${ctx.params.id}`);
+    } catch (err) {
+        formDisplayError(target, err, false);
+    }
 }

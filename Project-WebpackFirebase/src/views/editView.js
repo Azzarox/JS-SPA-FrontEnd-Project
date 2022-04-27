@@ -1,5 +1,7 @@
 import { html } from 'lit-html';
 import { updateSingleDoc } from '../server';
+import { errorTemplate } from '../templates/errorTemplate';
+import { formDisplayError } from '../utils/formErrorDisplay';
 import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
 import { imageURLIsNotCorrectValidator } from '../utils/imageUrlValidator';
 
@@ -7,6 +9,7 @@ const editTemplate = (ctx) => html` <section class="section container create">
     <section class="section container create">
         <h2 class="title">Edit</h2>
         <form @submit=${(ev) => onEdit(ev, ctx)} id="testform">
+            ${errorTemplate()}
             <div class="field">
                 <label class="label">Creator</label>
                 <div class="control">
@@ -77,17 +80,22 @@ const editTemplate = (ctx) => html` <section class="section container create">
 const collectionName = 'photos';
 function onEdit(ev, ctx) {
     ev.preventDefault();
+    let target = ev.currentTarget;
     const formData = Object.fromEntries(new FormData(ev.currentTarget));
-    if (formFieldIsEmptyValidator(formData)) {
-        return alert('Empty Fields!');
-    }
+    try {
+        if (formFieldIsEmptyValidator(formData)) {
+            throw new Error('Empty Fields!');
+        }
 
-    if (imageURLIsNotCorrectValidator(formData.image)) {
-        return alert('Image URL is not correct!');
-    }
+        if (imageURLIsNotCorrectValidator(formData.image)) {
+            throw new Error('Image URL is not correct!');
+        }
 
-    updateSingleDoc(collectionName, ctx.params.id, formData);
-    ctx.page.redirect(`/details/${ctx.params.id}`);
+        updateSingleDoc(collectionName, ctx.params.id, formData);
+        ctx.page.redirect(`/details/${ctx.params.id}`);
+    } catch (err) {
+        formDisplayError(target, err);
+    }
 }
 
 export const editView = async (ctx) => {
