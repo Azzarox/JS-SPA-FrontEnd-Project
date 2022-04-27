@@ -122,6 +122,11 @@ export const navigationTemplate = (ctx) => html`
 
 function burgerMenu(ev) {
     let navbarMenu = document.getElementById('navbarBasicExample');
-    navbarMenu.style.display =
-        navbarMenu.style.display !== 'block' ? 'block' : 'none';
+    if (navbarMenu.style.display !== 'block') {
+        navbarMenu.style.display = 'block';
+        ev.currentTarget.classList.add('is-active');
+    } else {
+        navbarMenu.style.display = 'none';
+        ev.currentTarget.classList.remove('is-active');
+    }
 }
