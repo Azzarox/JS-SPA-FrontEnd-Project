@@ -36,6 +36,9 @@ h6 {
 }
 
 /* utils */
+.opacity-8 {
+    opacity: 0.8;
+}
 
 .max-container {
     max-width: 600px;
@@ -439,10 +442,10 @@ section.hero-image {
     justify-content: center;
     align-items: center;
     text-align: center;
-    opacity: 0.8;
 }
+
 .modal-content-icon .circle-check {
-    color:green;
+    color: green;
     /* width: 150px;
     height: 150px; */
     width: 9rem;
@@ -456,6 +459,35 @@ section.hero-image {
 
 .modal-content-text > p {
     font-size: 25px;
+}
+
+/* Modal Delete */
+
+.model-content-icon-delete .circle-x {
+    color: #f14668;
+    width: 120px;
+    height: 120px;
+}
+
+.modal-content-text-delete p:first-child {
+    font-size: 25px;
+    margin-bottom: 4px;
+}
+
+.modal-content-text-delete p:nth-child(2) {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-delete-div-buttons {
+    display: flex;
+    justify-content: center;
+}
+.delete-cancel {
+    margin-right: 10px;
+}
+.delete-yes {
+    margin-left: 10px;
 }
 
 /*! debug.css | MIT License | zaydek.github.com/debug.css */
