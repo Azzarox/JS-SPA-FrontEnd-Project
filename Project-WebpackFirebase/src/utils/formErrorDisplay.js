@@ -1,6 +1,14 @@
-// The form must have dic with .error-class and p element with .error-message
-export const formDisplayError = (target, err) => {
+
+// The form must have div with .error-class and p element with .error-message
+export const formDisplayError = (target, err, scrollTrue = true) => {
     const p = target.querySelector('.error-class .error-message');
+    if (scrollTrue) {
+        p.scrollIntoView({
+            behavior: 'smooth',
+            block: 'end',
+            inline: 'nearest',
+        });
+    }
     if (err.code) {
         p.textContent = err.code;
     } else {
@@ -8,5 +16,5 @@ export const formDisplayError = (target, err) => {
     }
     setTimeout(() => {
         p.textContent = '';
-    }, 1000);
+    }, 2000);
 };
