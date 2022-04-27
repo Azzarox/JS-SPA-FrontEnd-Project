@@ -12,7 +12,8 @@ export const navigationTemplate = (ctx) => html`
                 </a>
             </figure>
 
-            <!-- <a
+            <a
+                @click=${burgerMenu}
                 role="button"
                 class="navbar-burger"
                 aria-label="menu"
@@ -22,25 +23,32 @@ export const navigationTemplate = (ctx) => html`
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
-            </a> -->
+            </a>
         </div>
 
         <div
             id="navbarBasicExample"
-            class="navbar-menu is-flex is-justify-content-space-between"
+            data-target="navbar-burger"
+            class="navbar-menu"
         >
             <div class="navbar">
                 <!-- <a class="navbar-item" href="/"> Home </a> -->
                 <a class="navbar-item" href="/catalog"> All </a>
+                <a class="navbar-item navbar-search-phone" href="#"> Search </a>
                 ${ctx.hasUser
                     ? html`
                           <a class="navbar-item" href="/create"> Create </a>
-                          <!-- <a class="navbar-item" href="/profile"> Profile </a> -->
+                          <a
+                              class="navbar-item navbar-profile-phone"
+                              href="/profile"
+                          >
+                              Profile
+                          </a>
                       `
                     : nothing}
                 <!-- <a class="navbar-item" href="/auth"> Auth </a> -->
             </div>
-            <div class="navbar is-grouped">
+            <div id="right-side-navbar" class="navbar is-grouped">
                 <div class="navbar">
                     <div class="navbar-item search-div">
                         <div class="field">
@@ -56,11 +64,10 @@ export const navigationTemplate = (ctx) => html`
                             ${ctx.hasUser
                                 ? html`
                                       <a href="/profile">
-                                          <figure
-                                              class="navbar-profile"
-                                          >
+                                          <figure class="navbar-profile">
                                               <img
-                                                  src="${ctx.user.profile.photoUrl}"
+                                                  src="${ctx.user.profile
+                                                      .photoUrl}"
                                                   class="user-image border"
                                               />
                                           </figure>
@@ -112,3 +119,9 @@ export const navigationTemplate = (ctx) => html`
 //     formSearch.reset();
 //     console.log(formData);
 // });
+
+function burgerMenu(ev) {
+    let navbarMenu = document.getElementById('navbarBasicExample');
+    navbarMenu.style.display =
+        navbarMenu.style.display !== 'block' ? 'block' : 'none';
+}
