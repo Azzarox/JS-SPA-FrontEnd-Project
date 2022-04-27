@@ -1,18 +1,13 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-module.exports = {
+const common = require('./webpack.common');
+const { merge } = require('webpack-merge');
+
+module.exports = merge(common, {
     mode: 'production',
-    // devtool: 'eval-source-map',
-    entry: ['./src/app.js', './src/server.js', './src/searchUI.js'],
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/',
-    },
     optimization: {
         // When using OptimizeCssAssetsPlugin it overwrites the default JS Minifier and optimizer (which is the terser-webpack-plugin)
         // So we need to add it manually again
@@ -45,7 +40,4 @@ module.exports = {
             },
         ],
     },
-    experiments: {
-        topLevelAwait: true,
-    },
-};
+});
