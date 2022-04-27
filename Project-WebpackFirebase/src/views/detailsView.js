@@ -35,7 +35,7 @@ const showEditDeleteButtons = (ctx, onDelete) => {
                 <span>Edit</span>
             </a>
             <a
-                @click=${onDelete}
+                @click=${enableDeleteModal}
                 href="javascript:void(0)"
                 class="button is-danger is-light"
             >
@@ -102,7 +102,7 @@ const showCommentButton = (ctx) => {
 
 const detailsTemplate = (ctx, onDelete) => html`
     <section class="section container">
-        ${deleteModal()}
+        ${deleteModal(ctx)}
 
         <p class="title my-2">${ctx.photo.title}</p>
         <div class="details-container">
@@ -192,15 +192,23 @@ const detailsTemplate = (ctx, onDelete) => html`
 const collectionName = 'photos';
 
 export const detailsView = async (ctx) => {
-    ctx.render(detailsTemplate(ctx, onDelete));
+    ctx.render(detailsTemplate(ctx));
+};
 
-    function onDelete(ev) {
-        const choice = confirm('Are you sure you want to delete?');
-        if (choice) {
+const enableDeleteModal = (ev) => {
+    const modal = document.querySelector('#modal-delete');
+    modal.classList.add('is-active');
+};
+
+export function onDeleteModal(ev, ctx) {
+    const modal = document.querySelector('#modal-delete');
+    if (ev.target.tagName == 'BUTTON') {
+        if (ev.target.textContent == 'Yes') {
             deleteData(collectionName, ctx.params.id);
             ctx.page.redirect('/catalog');
         } else {
+            modal.classList.remove('is-active');
             ctx.page.redirect(`/details/${ctx.params.id}`);
         }
     }
-};
+}
