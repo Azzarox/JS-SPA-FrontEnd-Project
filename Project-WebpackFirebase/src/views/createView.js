@@ -1,16 +1,19 @@
 import { html } from 'lit-html';
 import { getCollectionReference, postData } from '../server';
 import { errorTemplate } from '../templates/errorTemplate';
-import {formDisplayError } from '../utils/formErrorDisplay';
+import { successfullyCreatedModal } from '../templates/modalTemplates';
+import { formDisplayError } from '../utils/formErrorDisplay';
 import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
 import { imageURLIsNotCorrectValidator } from '../utils/imageUrlValidator';
 
 const createTemplate = (ctx) => html`
     <section class="section container create">
         <h2 class="title">Create</h2>
-        <form @submit=${(ev) => onSubmitCreate(ev, ctx)} id="testform">
 
-           ${errorTemplate()}
+        ${successfullyCreatedModal()}
+
+        <form @submit=${(ev) => onSubmitCreate(ev, ctx)} id="testform">
+            ${errorTemplate()}
             <div class="field">
                 <label class="label">Creator</label>
                 <div class="control">
@@ -66,6 +69,8 @@ const collectionReference = getCollectionReference(collectionName);
 
 function onSubmitCreate(ev, ctx) {
     ev.preventDefault();
+    const modal = document.querySelector('#modal-create');
+
     let target = ev.currentTarget;
     let formData = Object.fromEntries(new FormData(ev.currentTarget));
     formData.price = Number(formData.price);
@@ -80,8 +85,15 @@ function onSubmitCreate(ev, ctx) {
         }
 
         const data = { userId: ctx.user.uid, ...formData };
+
         postData(collectionReference, data);
-        ctx.page.redirect('/catalog');
+
+        modal.classList.add('is-active');
+
+        setTimeout(() => {
+            ctx.page.redirect('/catalog');
+        }, 3000);
+        
     } catch (err) {
         formDisplayError(target, err);
     }

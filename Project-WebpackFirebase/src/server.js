@@ -81,7 +81,7 @@ export const getByOrderedQuery = async (
 export const postData = async (collectionReference, data) => {
     try {
         await addDoc(collectionReference, data);
-        return alert('Successfuly created');
+        // return alert('Successfuly created');
     } catch (err) {
         return alert('You must have an account to create!');
     }
