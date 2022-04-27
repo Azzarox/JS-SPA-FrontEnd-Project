@@ -537,6 +537,7 @@ section.hero-image {
     }
 }
 
+
 @media (max-width: 480px) {
     /* All (catalog page) */
     .section.container div.catalog-flex {
@@ -544,14 +545,43 @@ section.hero-image {
         grid-template-columns: repeat(1, 1fr);
         gap: 20px;
     }
-
+    /* Forms container scaling
+     */
+    section.create {
+        width: 100%;
+    }
+    /* Profile */
     section.user-cards {
         grid-gap: 20px;
         display: grid;
         grid-template-columns: 1fr;
     }
-}
 
+    /* Details Buttons */
+    .right-details .button-group {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        margin-bottom: 20px;
+    }
+
+    /* Delete Modal */
+    .modal-content {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 75vw;
+        height: 40vh;
+    }
+    /* Comment Form */
+    .comment-form > form {
+        flex-basis: 80%;
+        resize: none;
+    }
+}
 /*! debug.css | MIT License | zaydek.github.com/debug.css */
 /* *:not(path):not(g) {
 	color:                    hsla(210, 100%, 100%, 0.9) !important;
