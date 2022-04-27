@@ -1,12 +1,16 @@
 import { html, nothing } from 'lit-html';
 import { deleteData } from '../server';
+import { deleteModal } from '../templates/modalTemplates';
 import { commentForm, commentFormHandler, commentsTemplate } from './comments';
 import { allLikes, createLike, getAllPhotoLikes } from './likes';
 
 const showEditDeleteButtons = (ctx, onDelete) => {
     if (ctx.photo.isOwner) {
         return html`
-            <a href="/details/edit/${ctx.photo.id}" class="button is-info is-light">
+            <a
+                href="/details/edit/${ctx.photo.id}"
+                class="button is-info is-light"
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="icon icon-tabler icon-tabler-edit"
@@ -98,7 +102,7 @@ const showCommentButton = (ctx) => {
 
 const detailsTemplate = (ctx, onDelete) => html`
     <section class="section container">
-        <!-- <h2 class="title">Details</h2> -->
+        ${deleteModal()}
 
         <p class="title my-2">${ctx.photo.title}</p>
         <div class="details-container">
@@ -181,7 +185,7 @@ const detailsTemplate = (ctx, onDelete) => html`
                 <p class="description-text">${ctx.photo.description}</p>
             </div>
         </div>
-        ${commentForm(ctx)}
+        ${commentForm(ctx)}}
     </section>
 `;
 
