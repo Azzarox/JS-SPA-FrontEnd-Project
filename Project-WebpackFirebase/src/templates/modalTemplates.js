@@ -1,7 +1,8 @@
 import { html } from 'lit-html';
+import { onDeleteModal } from '../views/detailsView';
 
 export const successfullyCreatedModal = () => html`
-    <div id="modal-create" class="modal is-active">
+    <div id="modal-create" class="modal">
         <div class="modal-background"></div>
         <div class="modal-content opacity-8">
             <div class="modal-content-icon">
@@ -28,7 +29,7 @@ export const successfullyCreatedModal = () => html`
     </div>
 `;
 
-export const deleteModal = () => html`
+export const deleteModal = (ctx) => html`
     <div id="modal-delete" class="modal">
         <div class="modal-background"></div>
         <div class="modal-content">
@@ -55,7 +56,10 @@ export const deleteModal = () => html`
             <div class="modal-content-text-delete">
                 <p>Are you sure you want to delete?</p>
                 <p>This action cannot be undone</p>
-                <div class="modal-delete-div-buttons">
+                <div
+                    @click=${(ev) => onDeleteModal(ev, ctx)}
+                    class="modal-delete-div-buttons"
+                >
                     <button class="button delete-cancel">Cancel</button>
                     <button class="button is-danger delete-yes">Yes</button>
                 </div>
