@@ -522,6 +522,11 @@ section.hero-image {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
     }
+
+    /* Create */
+    section.create {
+        width: 80%;
+    }
 }
 
 @media (max-width: 769px) {
@@ -543,7 +548,7 @@ section.hero-image {
     section.user-cards {
         grid-gap: 20px;
         display: grid;
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
     }
 }
 
