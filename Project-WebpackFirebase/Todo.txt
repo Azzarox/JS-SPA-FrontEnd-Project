@@ -1,9 +1,10 @@
 
-2. Change buttons to be outlined in the menu bar 
-3. Make custom alert popups
+1. Change buttons to be outlined in the menu bar 
+2. Add hover hamburger
 
-DONE: 1.Fix search - using algolia search extension
-DONE: 3.Add error fields to every form field;
-DONE: 4.Use scrollIntoView for showing errors on forms;
-DONE: 5.Make common webpack, development and production configs;
+DONE: Make custom alert popups
+DONE: Fix search - using algolia search extension
+DONE: Add error fields to every form field;
+DONE: Use scrollIntoView for showing errors on forms;
+DONE: Make common webpack, development and production configs;
 
