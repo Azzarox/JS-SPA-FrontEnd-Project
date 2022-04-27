@@ -32,20 +32,34 @@ export const navigationTemplate = (ctx) => html`
             class="navbar-menu"
         >
             <div class="navbar">
-                <!-- <a class="navbar-item" href="/"> Home </a> -->
                 <a class="navbar-item" href="/catalog"> All </a>
-                <a class="navbar-item navbar-search-phone" href="#"> Search </a>
+                <a class="navbar-item navbar-phone" href="#"> Search </a>
+
                 ${ctx.hasUser
                     ? html`
                           <a class="navbar-item" href="/create"> Create </a>
                           <a
-                              class="navbar-item navbar-profile-phone"
+                              class="navbar-item navbar-phone"
                               href="/profile"
                           >
                               Profile
                           </a>
+                          <a class="navbar-item navbar-phone" href="/sign-out"> Sign Out </a>
                       `
-                    : nothing}
+                    : html`
+                          <a
+                              class="navbar-item navbar-phone"
+                              href="/sign-in"
+                          >
+                              Sign In
+                          </a>
+                          <a
+                              class="navbar-item navbar-phone"
+                              href="/sign-up"
+                          >
+                              Sign Up
+                          </a>
+                      `}
                 <!-- <a class="navbar-item" href="/auth"> Auth </a> -->
             </div>
             <div id="right-side-navbar" class="navbar is-grouped">
