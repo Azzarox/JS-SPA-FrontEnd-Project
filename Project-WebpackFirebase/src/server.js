@@ -91,7 +91,6 @@ export const deleteData = async (collectionName, id) => {
     const docRef = doc(db, collectionName, id);
     try {
         await deleteDoc(docRef);
-        return alert('Successfuly deleted');
     } catch (err) {
         return alert('You must be creator of the article to Update or Delete!');
     }
