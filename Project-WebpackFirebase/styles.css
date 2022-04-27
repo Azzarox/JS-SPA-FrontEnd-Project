@@ -517,6 +517,18 @@ section.hero-image {
     }
 }
 
+@media (max-width: 769px) {
+}
+
+@media (max-width: 480px) {
+    /* All (catalog page) */
+    .section.container div.catalog-flex {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+}
+
 /*! debug.css | MIT License | zaydek.github.com/debug.css */
 /* *:not(path):not(g) {
 	color:                    hsla(210, 100%, 100%, 0.9) !important;
