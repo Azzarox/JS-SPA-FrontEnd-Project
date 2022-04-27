@@ -403,13 +403,14 @@ section.user-cards .card img {
 
 /* Custom Hero Homepage*/
 section.hero-image {
-    padding: 22rem;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url(https://images.pexels.com/photos/556669/pexels-photo-556669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: bottom;
     position: relative;
+    background-position: bottom;
+    width: 100vw;
+    height: 100vh;
 }
 
 .hero-text {
