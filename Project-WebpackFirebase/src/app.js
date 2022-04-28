@@ -21,6 +21,7 @@ import '../styles/media.css'
 
 import { detailsPreloader } from './middlewares/detailsPreloader.js';
 import { editView } from './views/editView.js';
+import { searchViewResponsive } from './views/searchResponsive.js';
 
 page(authMiddleware);
 page(renderMiddleware);
@@ -34,6 +35,7 @@ page('/sign-up', signUpView);
 page('/sign-out', signOutView);
 page('/details/:id', detailsPreloader, detailsView)
 page('/details/edit/:id', detailsPreloader, editView)
+page('/search', searchViewResponsive)
 // page('/auth', testAuthView);
 // page('/test', testView);
 // page('/test/:id', testEditView);

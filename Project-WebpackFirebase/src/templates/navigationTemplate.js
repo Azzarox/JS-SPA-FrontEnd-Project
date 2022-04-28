@@ -33,7 +33,7 @@ export const navigationTemplate = (ctx) => html`
         >
             <div class="navbar">
                 <a class="navbar-item" href="/catalog"> All </a>
-                <a class="navbar-item navbar-phone" href="#"> Search </a>
+                <a class="navbar-item navbar-phone" href="/search"> Search </a>
 
                 ${ctx.hasUser
                     ? html`
