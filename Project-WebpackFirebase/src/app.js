@@ -9,14 +9,18 @@ import { createView } from './views/createView.js';
 import { signUpView } from './views/signUpView.js';
 import { signInView } from './views/signInView.js';
 import { signOutView } from './views/signOutView.js';
-import { testView } from './views/testView.js';
-import { testEditView } from './views/testEditView.js';
+
 
 // NOTE: For webpack; Not an actual import working in vanilla js
-import '../styles.css';
+import '../styles/main.css';
+import '../styles/nav.css'
+import '../styles/catalog.css'
+import '../styles/details.css'
+import '../styles/profile.css'
+import '../styles/media.css'
+
 import { detailsPreloader } from './middlewares/detailsPreloader.js';
 import { editView } from './views/editView.js';
-// import { testAuthView } from './views/testAuthView.js';
 
 page(authMiddleware);
 page(renderMiddleware);
