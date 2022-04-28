@@ -105,4 +105,8 @@
         flex-basis: 80%;
         resize: none;
     }
+
+    .search-phone {
+        font-size: 10px;
+    }
 }
