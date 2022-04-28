@@ -1,4 +1,5 @@
-
+0. Make search page for mobile
+1. Add Media Object bulma to comment Form
 
 DONE: Separate css files
 DONE: Change buttons to be outlined in the menu bar 

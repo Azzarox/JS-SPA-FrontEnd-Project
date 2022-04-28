@@ -63,6 +63,9 @@
 }
 
 @media (max-width: 480px) {
+    section.section {
+        padding:1.5rem;
+    }
     /* All (catalog page) */
     .section.container div.catalog-flex {
         display: grid;
