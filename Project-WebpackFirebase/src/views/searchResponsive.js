@@ -4,7 +4,7 @@ import { catalogTemplate, catalogView } from './catalogView';
 
 //
 const searchTemplateResponsive = (ctx, searchPhotos) => html`
-    <div class="container">
+    <section class="section">
         <form @submit=${(ev) => onSubmitSearch(ev, ctx)}>
             <div class="panel-block">
                 <p class="control has-icons-left">
@@ -43,9 +43,11 @@ const searchTemplateResponsive = (ctx, searchPhotos) => html`
         </form>
 
         ${searchPhotos.length == 0
-            ? html`<p>There are no results.</p>`
+            ? html`
+            
+            <p class="no-results-search">There are no results.</p>`
             : catalogTemplate(ctx, searchPhotos)}
-    </div>
+    </section>
 `;
 
 export const searchViewResponsive = (ctx) => {
