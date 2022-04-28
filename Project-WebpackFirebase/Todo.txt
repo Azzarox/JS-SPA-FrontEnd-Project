@@ -1,6 +1,6 @@
 
-3. Separate css
 
+DONE: Separate css files
 DONE: Change buttons to be outlined in the menu bar 
 DONE: Make custom alert popups
 DONE: Fix search - using algolia search extension
