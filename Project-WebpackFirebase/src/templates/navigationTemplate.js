@@ -87,7 +87,7 @@ export const navigationTemplate = (ctx) => html`
                                           </figure>
                                       </a>
                                       <a
-                                          class="button is-light"
+                                          class="button is-light is-outlined-custom"
                                           href="/sign-out"
                                       >
                                           Sign out
@@ -100,7 +100,7 @@ export const navigationTemplate = (ctx) => html`
                                           <strong>Sign up</strong>
                                       </a>
                                       <a
-                                          class="button is-light"
+                                          class="button is-light is-outlined-custom"
                                           href="/sign-in"
                                       >
                                           Sign in

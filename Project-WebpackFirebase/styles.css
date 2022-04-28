@@ -34,6 +34,19 @@ h6 {
 .button.is-primary:focus:not(:active) {
     box-shadow: none;
 }
+
+.button.is-outlined-custom {
+    background: #fff;
+    border: 1px solid #95685ce3;
+    color: #95685ce3;
+    font-weight: 600;
+
+}
+.button.is-outlined-custom:hover {
+    background: #95685ce3;
+    color: #fff;
+}
+
 /* utils */
 .opacity-8 {
     opacity: 0.8;
@@ -542,7 +555,6 @@ section.hero-image {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 
 @media (max-width: 480px) {
     /* All (catalog page) */
