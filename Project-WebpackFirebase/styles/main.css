@@ -1,0 +1,159 @@
+@import 'https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css';
+::after,
+::before,
+* {
+    box-sizing: border-box;
+}
+
+p::first-letter,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: capitalize;
+}
+
+:root {
+    --width-max: 100%;
+}
+
+
+/* utils */
+.opacity-8 {
+    opacity: 0.8;
+}
+
+.max-container {
+    max-width: 600px;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.border {
+    border: 0.5px solid rgb(119, 118, 118);
+}
+
+/* */
+main {
+    margin: 0 auto;
+}
+
+
+
+/* Section width 
+used in create and edit forms*/
+section.create {
+    width: 50%;
+}
+
+/* Error class messages */
+.error-class .error-message {
+    color: red;
+    font-size: 20px;
+}
+
+/* Custom Hero Homepage*/
+section.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url(https://images.pexels.com/photos/556669/pexels-photo-556669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    background-position: bottom;
+    width: 100vw;
+    height: 100vh;
+}
+
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 35px;
+}
+
+/* Comment Form Toggler */
+#comment-form {
+    visibility: hidden;
+}
+
+/* Modal Successfully Created */
+.modal-background {
+    background-color: rgba(71, 68, 68, 0.56);
+}
+
+.modal-content {
+    background-color: white;
+    /* width: 500px;
+    height: 450px; */
+    width: 32rem;
+    height: 21rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.modal-content-icon .circle-check {
+    color: green;
+    /* width: 150px;
+    height: 150px; */
+    width: 9rem;
+    height: 9rem;
+}
+
+.modal-content-text > h2 {
+    font-size: 30px;
+    margin-bottom: 4px;
+}
+
+.modal-content-text > p {
+    font-size: 25px;
+}
+
+/* Modal Delete */
+
+.model-content-icon-delete .circle-x {
+    color: #f14668;
+    width: 120px;
+    height: 120px;
+}
+
+.modal-content-text-delete p:first-child {
+    font-size: 25px;
+    margin-bottom: 4px;
+}
+
+.modal-content-text-delete p:nth-child(2) {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-delete-div-buttons {
+    display: flex;
+    justify-content: center;
+}
+.delete-cancel {
+    margin-right: 5px;
+}
+.delete-yes {
+    margin-left: 10px;
+}
+
+/* Media queries */
+
+/*! debug.css | MIT License | zaydek.github.com/debug.css */
+/* *:not(path):not(g) {
+	color:                    hsla(210, 100%, 100%, 0.9) !important;
+	background:               hsla(210, 100%,  50%, 0.5) !important;
+	outline:    solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
+
+	box-shadow: none !important;
+} */

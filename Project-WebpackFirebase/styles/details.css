@@ -1,0 +1,146 @@
+/* Details */
+
+.details-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 20px;
+    margin-bottom: 30px;
+
+    /* max-height: 110vh; */
+}
+
+.right-details {
+    /* display: grid;
+    grid-template-rows: 1fr 0fr;
+     */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* max-height: 496px; */
+}
+
+.right-details .comments {
+    /* no scroll */
+    /* overflow-y: hidden;
+    margin-bottom: 60px;  */
+
+    /* with scroll*/
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    margin-bottom: 53px;
+    /* height: 267px; */
+}
+
+.right-details .comments p.no-comments {
+    font-size: 20px;
+}
+
+.right-details .comments ul {
+    width: (var(--width-max));
+}
+
+.right-details .comments ul li:not(:first-child) {
+    margin-top: 10px;
+}
+
+.right-details .comments ul li div.user-avatar {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+.right-details .comments ul li div.user-avatar::before {
+    content: '';
+    top: 95%;
+    position: absolute;
+    height: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    border: 1px solid #807979;
+    left: 15px;
+}
+
+/* to use it in the comment section and the avatar headnavbar */
+.user-image {
+    border-radius: 100%;
+    height: 30px;
+    width: 31px;
+}
+/* .right-details .comments ul li div.user-avatar .user-image {
+    border-radius: 100%;
+    height: 30px;
+    width: 31px;
+} */
+.right-details .comments ul li div.comment-content p {
+    padding: 10px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;
+}
+
+.right-details .button-group {
+    display: flex;
+    justify-content: space-between;
+}
+.right-details .button-group .button-group-likes {
+    display: flex;
+    align-items: center;
+}
+.right-details .button-group .button-group-likes p {
+    padding: 0 10px;
+}
+
+/* for details image */
+.left-details {
+    /* May have some  problems with .comments div */
+    width: 100%;
+    height: auto;
+}
+
+.left-details img {
+    object-fit: contain;
+    width: 100%;
+    /* height: 100%; */
+}
+
+/* end for details image */
+
+.description {
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.description-text-container {
+    padding: 10px 0;
+    width: 50%;
+}
+.description-text-container p.description-text {
+    width: 100%;
+    overflow-wrap: break-word;
+    line-height: normal;
+    font-size: 19px;
+    text-transform: none;
+}
+.description::before {
+    content: 'Description:';
+}
+
+.comment-form {
+    display: flex;
+    justify-content: center;
+    /* visibility: hidden; */ /* for toggling */
+}
+
+.comment-form > form {
+    flex-basis: 59%;
+    resize: none;
+}
+
+.comment-form form.field.control textarea {
+    height: 100px;
+    resize: none;
+}
+
+/* DETAILS END */

@@ -1,0 +1,84 @@
+/* NOTE: NAV Main Style/Layout */
+div#navbarBasicExample {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* NOTE: NAV Phone */
+.navbar .navbar-phone {
+    display: none;
+
+}
+
+/*NOTE: NAV Buttons */
+
+/* Change .is-primary buttons color and hover */
+.button.is-primary {
+    /* background-color: #643326e3; */
+    background-color: #95685ce3;
+    font-weight: 600;
+    /* background-color: #593329; */
+}
+
+.button.is-primary:hover {
+    background-color: #886257;
+}
+
+.button.is-primary:focus:not(:active) {
+    box-shadow: none;
+}
+
+.button.is-outlined-custom {
+    background: #fff;
+    border: 1px solid #95685ce3;
+    color: #95685ce3;
+    font-weight: 600;
+}
+.button.is-outlined-custom:hover {
+    background: #95685ce3;
+    color: #fff;
+}
+
+
+
+
+
+/* NOTE: NAV Profile Image */
+figure.navbar-profile {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 50%;
+    right: 10px;
+    padding: 0 15px;
+}
+
+/* NOTE: NAV Search */
+
+.search-form {
+    margin-right: -40px;
+}
+
+.search-form input {
+    z-index: 0;
+    padding: 3px;
+    border: 1px solid #95685ce3;
+    display: none;
+}
+
+.search-icon-link {
+    position: relative;
+    vertical-align: top;
+    right: 40px;
+    top: 2px;
+    z-index: 1;
+    /* reset button styling*/
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
