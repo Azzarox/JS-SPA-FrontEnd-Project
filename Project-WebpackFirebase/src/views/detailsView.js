@@ -208,7 +208,10 @@ export function onDeleteModal(ev, ctx) {
     if (ev.target.tagName == 'BUTTON') {
         if (ev.target.textContent == 'Yes') {
             deleteData(collectionName, ctx.params.id);
-            ctx.page.redirect('/catalog');
+            // NOTE: If catalog page > details > delete -> to redirect back to the catalog
+            // If profile > details > delete -> to redirect back to the profile
+            window.history.back() 
+            // ctx.page.redirect('/catalog');
         } else {
             modal.classList.remove('is-active');
             ctx.page.redirect(`/details/${ctx.params.id}`);
