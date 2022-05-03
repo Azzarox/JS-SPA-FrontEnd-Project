@@ -143,4 +143,18 @@
     resize: none;
 }
 
+.comment-title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.comment-title-wrapper > p:nth-child(2) {
+    white-space: nowrap;
+    margin-right: 2%;
+}
+.comment-timestamp {
+    font-style: italic;
+    font-size: 13px;
+}
+
 /* DETAILS END */
