@@ -76,7 +76,7 @@ section.hero-image {
 }
 
 /* Comment Form Toggler */
-#comment-form {
+form#form-visibility {
     visibility: hidden;
 }
 
