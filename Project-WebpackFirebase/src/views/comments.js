@@ -41,7 +41,40 @@ export const commentsTemplate = (ctx) => {
 export const commentForm = (ctx) => {
     if (ctx.hasUser && !ctx.photo.isOwner) {
         return html`
-            <div class="comment-form">
+            <form
+                id="form-visibility"
+                action=""
+                @submit=${(ev) => onSubmitComment(ev, ctx)}
+            >
+                ${errorTemplate()}
+                <article class="media">
+                    <figure class="media-left">
+                        <p class="image is-64x64">
+                            <img src="${ctx.user.profile.photoUrl}" />
+                        </p>
+                    </figure>
+
+                    <div class="media-content">
+                        <div class="field">
+                            <p class="control">
+                                <textarea
+                                    class="textarea"
+                                    placeholder="Add a comment..."
+                                    name="content"
+                                    id="comment"
+                                ></textarea>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control">
+                                <button class="button">Post comment</button>
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </form>
+
+            <!-- <div class="comment-form">
                 <form
                     @submit=${(ev) => onSubmitComment(ev, ctx)}
                     class="field control box"
@@ -64,13 +97,13 @@ export const commentForm = (ctx) => {
                         </button>
                     </div>
                 </form>
-            </div>
+            </div> -->
         `;
     }
 };
 
 export function commentFormHandler() {
-    const commentForm = document.querySelector('.comment-form');
+    const commentForm = document.querySelector('#form-visibility');
     commentForm.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scrolls to the element
 
     commentForm.style.visibility =
