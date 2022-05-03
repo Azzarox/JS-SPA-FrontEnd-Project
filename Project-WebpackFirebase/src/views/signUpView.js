@@ -87,13 +87,9 @@ async function onSignUp(ev, ctx) {
 
         const user = await createUser(formData.email, formData.password);
         user.displayName = formData.username;
-        
         // user.photoURL = formData.photo;
         
         user.photoURL = formData.photo == "" ? '/images/default-image.jpg' : formData.photo
-        // if (formData.photo == ""){
-        //     user.photoURL == './images/logobigg.png'
-        // }
 
         // NOTE: Creates 'users' collection in the database with more general fields like profile image and such
 
