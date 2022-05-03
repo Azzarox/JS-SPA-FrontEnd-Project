@@ -10,7 +10,8 @@
     "build": "webpack --config webpack.prod.js",
     "build:dev": "webpack --config webpack.dev.js",
     "watch": "webpack --watch --config webpack.dev.js",
-    "watch:prod": "webpack --watch --config webpack.prod.js"
+    "watch:prod": "webpack --watch --config webpack.prod.js",
+    "deploy": "npm run build && firebase deploy"
   },
   "keywords": [],
   "author": "",
