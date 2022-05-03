@@ -66,18 +66,33 @@ async function onSignUp(ev, ctx) {
     const target = ev.currentTarget;
     const formData = Object.fromEntries(new FormData(ev.currentTarget));
     // ev.target.reset();
+
+    // NOTE: Doesn't include photo since it could be empty
+    const toValidateFields = {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        repass: formData.repass,
+    };
+
     try {
-        if (formFieldIsEmptyValidator(formData)) {
+        if (formFieldIsEmptyValidator(toValidateFields)) {
             throw new Error('Empty Fields');
         }
 
-        if (imageURLIsNotCorrectValidator(formData.photo)) {
+        if (formData.photo !== "" && imageURLIsNotCorrectValidator(formData.photo)) {
             throw new Error('Image url is not correct!');
         }
 
         const user = await createUser(formData.email, formData.password);
         user.displayName = formData.username;
-        user.photoURL = formData.photo;
+        
+        // user.photoURL = formData.photo;
+        
+        user.photoURL = formData.photo == "" ? './images/default-image.jpg' : formData.photo
+        // if (formData.photo == ""){
+        //     user.photoURL == './images/logobigg.png'
+        // }
 
         // NOTE: Creates 'users' collection in the database with more general fields like profile image and such
 
