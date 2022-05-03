@@ -6,7 +6,7 @@ import { formFieldIsEmptyValidator } from '../utils/formFieldsValidator';
 import { imageURLIsNotCorrectValidator } from '../utils/imageUrlValidator';
 
 const signUpTemplate = (ctx) => html`
-    <section class="section container">
+    <section class="section container sign-up">
         <h2 class="title">Sign up</h2>
 
         <form @submit=${(ev) => onSignUp(ev, ctx)}>
@@ -26,7 +26,7 @@ const signUpTemplate = (ctx) => html`
                 </div>
             </div>
 
-            <div class="field">
+            <div class="field photo">
                 <label class="label">Photo URL</label>
                 <div class="control">
                     <input class="input" name="photo" type="text" />
@@ -34,13 +34,14 @@ const signUpTemplate = (ctx) => html`
             </div>
 
             <div class="field">
-                <label class="label">Password:</label>
+                <label class="label">Password</label>
+                <p class="info-message"></p>
                 <div class="control">
                     <input class="input" name="password" type="password" />
                 </div>
             </div>
             <div class="field">
-                <label class="label">Confirm Password:</label>
+                <label class="label">Confirm Password</label>
                 <div class="control">
                     <input class="input" name="repass" type="password" />
                 </div>

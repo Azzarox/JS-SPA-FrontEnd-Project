@@ -19,7 +19,6 @@ h6 {
     --width-max: 100%;
 }
 
-
 /* utils */
 .opacity-8 {
     opacity: 0.8;
@@ -41,8 +40,6 @@ h6 {
 main {
     margin: 0 auto;
 }
-
-
 
 /* Section width 
 used in create and edit forms*/
@@ -145,6 +142,23 @@ section.hero-image {
 }
 .delete-yes {
     margin-left: 10px;
+}
+
+.sign-up > form > div.field:not(div.field.photo) > label::after {
+    content: '*';
+    margin-left: 2px;
+    color: rgb(151, 56, 56);
+}
+
+.info-message {
+    margin-bottom: 10px;
+}
+.sign-up > form > div.field:nth-child(5) > .info-message:before {
+    content:"Must be at least 6 characters";
+    display:block;
+    font-size: 12px;
+    color: rgb(151, 56, 56);
+    font-weight: 500;
 }
 
 /* Media queries */
