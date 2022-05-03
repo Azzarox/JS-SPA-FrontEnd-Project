@@ -46,7 +46,14 @@ export const getData = async (collectionReference) => {
     const results = await getDocs(collectionReference);
     let photos = [];
     results.docs.forEach((photo) =>
-        photos.push({ id: photo.id, ...photo.data() })
+        photos.push({
+            id: photo.id,
+            ...photo.data({ serverTimestamps: 'estimate' }),
+            // NOTE: used in the comments page (serverTimestamp)
+            // Addig the serverTimestamps: estimate because it needs time to load the timestamp
+            // and it is null during that time which is making the application stop
+
+        })
     );
     return photos;
 };
