@@ -1,6 +1,6 @@
 
 0. Always run `npm run build` before `firebase deploy` to minify;
-
+1. To make 404.html page
 2. To rethink showing/hidin comment form (maybe only scroll to and focus on the text-area)
 
 DONE: Comments show by recent
