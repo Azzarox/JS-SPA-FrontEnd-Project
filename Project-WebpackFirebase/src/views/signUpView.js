@@ -90,7 +90,7 @@ async function onSignUp(ev, ctx) {
         
         // user.photoURL = formData.photo;
         
-        user.photoURL = formData.photo == "" ? './images/default-image.jpg' : formData.photo
+        user.photoURL = formData.photo == "" ? '/images/default-image.jpg' : formData.photo
         // if (formData.photo == ""){
         //     user.photoURL == './images/logobigg.png'
         // }
