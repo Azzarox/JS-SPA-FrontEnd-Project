@@ -1,3 +1,4 @@
+import { serverTimestamp } from 'firebase/firestore';
 import { html, nothing } from 'lit-html';
 import { getCollectionReference, getSingleDoc, postData } from '../server';
 import { errorTemplate } from '../templates/errorTemplate';
@@ -122,10 +123,12 @@ async function onSubmitComment(ev, ctx) {
         if (data.content == '') {
             throw new Error("Can't post an empty comment!");
         }
+        debugger;
         postData(collectionReference, {
             content: data.content,
             photoId: ctx.params.id,
             creatorUser: commentCreatorUser,
+            createdAt: serverTimestamp(),
         });
         target.reset();
         ctx.page.redirect(`/details/${ctx.params.id}`);
