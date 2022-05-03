@@ -27,9 +27,6 @@ export const detailsPreloader = async (ctx, next) => {
         'desc'
     );
 
-
-    console.log(ctx.photo.comments);
-
     ctx.photo.likes = (await getAllPhotoLikes(ctx)).length;
 
     let likes = await getAllPhotoLikes(ctx);
