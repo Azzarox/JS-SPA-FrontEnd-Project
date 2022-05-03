@@ -14,7 +14,10 @@ const commentTemplate = (comment) => {
                         class="user-image border"
                     />
                 </figure>
+                <div class="comment-title-wrapper">
                 <p class="ml-2">${comment.creatorUser.username} says:</p>
+                <p class="comment-timestamp">${comment.createdAt.toDate().toUTCString()}</p>
+                </div>
             </div>
             <div class="comment-content">
                 <p>${comment.content}</p>
