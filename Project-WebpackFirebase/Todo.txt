@@ -1,7 +1,9 @@
 
+0. Always run `npm run build` before `firebase deploy` to minify;
 
-2. To rething showing/hidin comment form (maybe only scroll to and focus on the text-area)
+2. To rethink showing/hidin comment form (maybe only scroll to and focus on the text-area)
 
+DONE: Comments show by recent
 DONE: Add Media Object bulma to comment Form
 DONE: Make default image for avatar on signup
 DONE: Make avatar image to be empty
