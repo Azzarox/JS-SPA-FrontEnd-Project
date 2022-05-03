@@ -25,7 +25,6 @@ const commentTemplate = (comment) => {
         </li>
     `;
 };
-
 export const commentsTemplate = (ctx) => {
     return html`
         <div class="comments">
@@ -131,7 +130,7 @@ async function onSubmitComment(ev, ctx) {
             content: data.content,
             photoId: ctx.params.id,
             creatorUser: commentCreatorUser,
-            createdAt: serverTimestamp(),
+            createdAt: serverTimestamp()
         });
         target.reset();
         ctx.page.redirect(`/details/${ctx.params.id}`);
