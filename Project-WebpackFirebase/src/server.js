@@ -12,6 +12,7 @@ import {
     orderBy,
     updateDoc,
     setDoc,
+    limit,
 } from 'firebase/firestore';
 
 import {
@@ -68,12 +69,31 @@ export const getByOrderedQuery = async (
     propertyToLookFor,
     condition,
     conditionValue,
+    propertyToLookForOrdering,
     fieldCondition = 'asc'
 ) => {
     const q = query(
         collectionReference,
         where(propertyToLookFor, condition, conditionValue),
-        orderBy(propertyToLookFor, fieldCondition)
+        orderBy(propertyToLookForOrdering, fieldCondition)
+    );
+    return await getData(q);
+};
+
+export const getByLimitedOrderQuery = async (
+    collectionReference,
+    propertyToLookFor,
+    condition,
+    conditionValue,
+    propertyToLookForOrdering,
+    fieldCondition = 'asc',
+    limitNumber
+) => {
+    const q = query(
+        collectionReference,
+        where(propertyToLookFor, condition, conditionValue),
+        orderBy(propertyToLookForOrdering, fieldCondition),
+        limit(limitNumber)
     );
     return await getData(q);
 };
