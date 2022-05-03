@@ -1,9 +1,11 @@
-0. Make default image for avatar on signup
-0.1. Make avatar image to be empty
-0.2 Make the image regex less strict
+
 
 1. Add Media Object bulma to comment Form
 
+
+DONE: Make default image for avatar on signup
+DONE: Make avatar image to be empty
+DONE: Make the image regex less strict
 DONE: Make search page for mobile:
 DONE: Separate css files
 DONE: Change buttons to be outlined in the menu bar 
