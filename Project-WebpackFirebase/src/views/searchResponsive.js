@@ -59,7 +59,7 @@ async function onSubmitSearch(ev, ctx) {
     let target = ev.currentTarget;
     let formData = Object.fromEntries(new FormData(ev.currentTarget));
     const searchPhotos = await getSearchData(formData.search);
-    console.log(searchPhotos);
+    // console.log(searchPhotos);
     target.reset();
     ctx.render(searchTemplateResponsive(ctx, searchPhotos));
 }
