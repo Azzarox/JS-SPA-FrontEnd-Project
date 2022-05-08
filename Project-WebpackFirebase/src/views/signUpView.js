@@ -27,17 +27,17 @@ const signUpTemplate = (ctx) => html`
             </div>
 
             <div class="field photo">
-                <label class="label">Photo URL</label>
+                <label class="label">Profile Image URL</label>
                 <div class="control">
                     <input class="input" name="photo" type="text" />
                 </div>
             </div>
 
-            <div class="field">
+            <div class="field" >
                 <label class="label">Password</label>
                 <p class="info-message"></p>
                 <div class="control">
-                    <input class="input" name="password" type="password" />
+                    <input class="input" name="password" type="password" @keyup=${keyPressEventHandler} />
                 </div>
             </div>
             <div class="field">
@@ -105,4 +105,10 @@ async function onSignUp(ev, ctx) {
 
     // setUserPropsToLocalStorage(user)
     //NOTE: To check with localStorage.
+}
+
+
+function keyPressEventHandler(ev){
+    const infoMessage = document.querySelector('.info-message');
+    infoMessage.style.display = ev.target.value.length >= 6 ? 'none' : 'block';
 }
