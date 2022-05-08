@@ -14,12 +14,12 @@ const createTemplate = (ctx) => html`
 
         <form @submit=${(ev) => onSubmitCreate(ev, ctx)} id="testform">
             ${errorTemplate()}
-            <div class="field">
+            <!-- <div class="field">
                 <label class="label">Creator</label>
                 <div class="control">
                     <input class="input" type="text" name="creator" />
                 </div>
-            </div>
+            </div> -->
 
             <div class="field">
                 <label class="label">Title</label>
@@ -73,6 +73,11 @@ function onSubmitCreate(ev, ctx) {
 
     let target = ev.currentTarget;
     let formData = Object.fromEntries(new FormData(ev.currentTarget));
+    
+    // NOTE: Creates the creator field to be the username of the user.
+    formData.creator = ctx.user.profile.username;
+
+    // console.log(formData);
     formData.price = Number(formData.price);
 
     try {
@@ -84,7 +89,7 @@ function onSubmitCreate(ev, ctx) {
             throw new Error('Image URL is not correct!');
         }
 
-        const data = { userId: ctx.user.uid, ...formData };
+        const data = { userId: ctx.user.uid, ...formData};
 
         postData(collectionReference, data);
 
