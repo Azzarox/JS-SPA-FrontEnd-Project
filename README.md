@@ -1,11 +1,10 @@
 # JS-SPA-FrontEnd-Project
-Small Front-End project which is Single Page Application and uses Firebase for authentication and database.
+Small Front-End project which is a Single Page Application and uses Firebase for authentication and database.
 
 # The project
 Link: https://fir-project-39721.web.app/
 
-Project overview:
-You can:
+## Project overview:
 1. Sign-Up
 2. Sign-In
 3. View all created photos from other users and you respectively
@@ -19,7 +18,8 @@ You can:
 11. Edit your profile
 12. View your created photos in the profile page
 
-*The Project is responsive 
+**The Project is responsive 
+**Price functionality is currently not working due to restrictions in the back-end
 
 # Developing Instructions
 1. Run `npm start` to start the lite-server for dynamic changes while developing.
