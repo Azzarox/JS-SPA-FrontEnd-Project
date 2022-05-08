@@ -12,18 +12,22 @@ Password: `tester`
 
 ## Project overview:
 
-1. Sign-Up
+1. Sign-Up 
 2. Sign-In
 3. View all created photos from other users and you respectively
-4. Create a photo
+4. Create a photo 
 5. Edit a photo
 6. Delete a photo
-7. Comment a photo
+7. Comment a photo 
 8. Like a photo
 9. Search photo
 10. View your profile
 11. Edit your profile
 12. View your created photos in the profile page
+
+- 1, 2, 3 and 9 - Can be done with guest account
+- 5 and 6 - Can be done only if **YOU ARE** the creator of the photo
+- 7 and 8 - Can be done only if you are **NOT** the creator of the photo
 
 ***The Project is responsive***
 
