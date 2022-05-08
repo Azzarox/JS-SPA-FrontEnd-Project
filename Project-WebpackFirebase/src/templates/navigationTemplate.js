@@ -112,17 +112,22 @@ export const navigationTemplate = (ctx) => html`
 
 function burgerMenu(ev) {
     // NOTE: Refactored so it the navbar-burger menu closes automatically when clicking another links in the navigation
-    
+
     let navbarMenu = document.getElementById('navbarBasicExample');
     let navbarBurgerAnchor = document.querySelector('a.navbar-burger');
-    
-    if (ev.target.tagName == 'A') {
-        if (navbarMenu.style.display !== 'block') {
-            navbarMenu.style.display = 'block';
-            navbarBurgerAnchor.classList.add('is-active');
-        } else {
-            navbarMenu.style.display = 'none';
-            navbarBurgerAnchor.classList.remove('is-active');
+
+    // NOTE: window.matchMedia('(max-width:1024px)') returns MediaQueryList object
+    // .matches returs true or false and thus it makes the event listener active only when there is a media query in action
+
+    if (window.matchMedia('(max-width:1024px)').matches) {
+        if (ev.target.tagName == 'A') {
+            if (navbarMenu.style.display !== 'block') {
+                navbarMenu.style.display = 'block';
+                navbarBurgerAnchor.classList.add('is-active');
+            } else {
+                navbarMenu.style.display = 'none';
+                navbarBurgerAnchor.classList.remove('is-active');
+            }
         }
     }
 }
