@@ -1,3 +1,7 @@
+Username: Tester
+Email: test@test.com
+Pass: tester
+
 
 0. Always run `npm run build` before `firebase deploy` to minify;
 1. To make 404.html page
