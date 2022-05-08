@@ -4,7 +4,12 @@ const userLinks = html``;
 const guestLinks = html``;
 
 export const navigationTemplate = (ctx) => html`
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav
+        @click=${burgerMenu}
+        class="navbar"
+        role="navigation"
+        aria-label="main navigation"
+    >
         <div class="navbar-brand" style="margin: 0 10px;">
             <figure class="image is-64x64">
                 <a href="/">
@@ -13,7 +18,6 @@ export const navigationTemplate = (ctx) => html`
             </figure>
 
             <a
-                @click=${burgerMenu}
                 role="button"
                 class="navbar-burger"
                 aria-label="menu"
@@ -32,31 +36,24 @@ export const navigationTemplate = (ctx) => html`
             class="navbar-menu"
         >
             <div class="navbar">
-                <a class="navbar-item" href="/catalog"> All </a>
+                <a class="navbar-item" href="/catalog"> Gallery </a>
                 <a class="navbar-item navbar-phone" href="/search"> Search </a>
 
                 ${ctx.hasUser
                     ? html`
                           <a class="navbar-item" href="/create"> Create </a>
-                          <a
-                              class="navbar-item navbar-phone"
-                              href="/profile"
-                          >
+                          <a class="navbar-item navbar-phone" href="/profile">
                               Profile
                           </a>
-                          <a class="navbar-item navbar-phone" href="/sign-out"> Sign Out </a>
+                          <a class="navbar-item navbar-phone" href="/sign-out">
+                              Sign Out
+                          </a>
                       `
                     : html`
-                          <a
-                              class="navbar-item navbar-phone"
-                              href="/sign-in"
-                          >
+                          <a class="navbar-item navbar-phone" href="/sign-in">
                               Sign In
                           </a>
-                          <a
-                              class="navbar-item navbar-phone"
-                              href="/sign-up"
-                          >
+                          <a class="navbar-item navbar-phone" href="/sign-up">
                               Sign Up
                           </a>
                       `}
@@ -113,34 +110,19 @@ export const navigationTemplate = (ctx) => html`
     </nav>
 `;
 
-// const formSearch = document.querySelector('.search-form');
-// const searchIconLink = document.querySelector('.search-icon-link');
-// let searchInputField = document.querySelector('.search-input-field');
-
-// searchIconLink.addEventListener(
-//     'click',
-//     () => {
-//         // searchInputField.removeAttribute('disabled');
-//         // searchInputField.style.opacity = '.5';
-//         searchInputField.style.display = 'block';
-//     },
-//     { once: true }
-// );
-
-// formSearch.addEventListener('submit', (ev) => {
-//     ev.preventDefault();
-//     const formData = Object.fromEntries(new FormData(ev.currentTarget));
-//     formSearch.reset();
-//     console.log(formData);
-// });
-
 function burgerMenu(ev) {
+    // NOTE: Refactored so it the navbar-burger menu closes automatically when clicking another links in the navigation
+    
     let navbarMenu = document.getElementById('navbarBasicExample');
-    if (navbarMenu.style.display !== 'block') {
-        navbarMenu.style.display = 'block';
-        ev.currentTarget.classList.add('is-active');
-    } else {
-        navbarMenu.style.display = 'none';
-        ev.currentTarget.classList.remove('is-active');
+    let navbarBurgerAnchor = document.querySelector('a.navbar-burger');
+    
+    if (ev.target.tagName == 'A') {
+        if (navbarMenu.style.display !== 'block') {
+            navbarMenu.style.display = 'block';
+            navbarBurgerAnchor.classList.add('is-active');
+        } else {
+            navbarMenu.style.display = 'none';
+            navbarBurgerAnchor.classList.remove('is-active');
+        }
     }
 }
